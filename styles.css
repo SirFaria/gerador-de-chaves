@@ -2,15 +2,17 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
 }
 
 body {
-  background-color: #fffffe;
+  background-color: #333;
   height: 100vh;
 }
 
 button {
-  background-color: #ff8e3c;
+  background-color: #0d3b66;
+  color: white;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 4px;
@@ -24,7 +26,7 @@ button:hover {
 }
 
 .file-selector-row {
-  background-color: #eff0f3;
+  background-color: #333;
   padding: 2rem;
   display: flex;
   justify-content: center;
@@ -34,11 +36,67 @@ button:hover {
 
 .matches-container {
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: calc(100% - 95px);
 }
 
-.matches-column {
-  flex: 1;
+header {
+  width: 50%;
+  text-align: center;
+  font-weight: 600;
+  padding: 0.5rem;
+  color: white;
+}
+
+header.age {
+  width: 100%;
+  border-top: 2px solid #0d3b66;
+}
+
+.matches-row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.matches-container p {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 4px;
+}
+
+.matches-container p span {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
   height: 100%;
+  flex: 1;
+  border: 2px solid #0d3b66;
+  border-radius: 4px;
+  min-height: 100px;
+  text-transform: capitalize;
+}
+
+.masculino-column {
+  background-color: #edeefd;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0 0 1rem 0;
+  border-right: 2px solid #eee;
+}
+
+.feminino-column {
+  background-color: #feecec;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0 0 1rem 0;
+  border-left: 2px solid #ccc;
 }

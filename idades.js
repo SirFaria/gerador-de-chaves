@@ -1,19 +1,20 @@
-import { listarConfrontos, retornarIdade } from "./utils.js";
-
-function carregarCategoria(lista, validador) {
-  const participantes = lista.filter(({ Nasc }) =>
-    validador(retornarIdade(Nasc))
-  );
-
-  return listarConfrontos(participantes);
-}
+import {
+  listarConfrontos,
+  retornaFeminino,
+  retornaMasculino,
+  retornarIdade,
+} from "./utils.js";
 
 function abaixoCinco(lista) {
   const participantes = lista.filter(({ Nasc }) => retornarIdade(Nasc) < 6);
 
-  const confrontos = listarConfrontos(participantes);
+  const masculino = retornaMasculino(participantes);
+  const feminino = retornaFeminino(participantes);
 
-  return confrontos;
+  const confrontosM = listarConfrontos(masculino);
+  const confrontosF = listarConfrontos(feminino);
+
+  return { confrontosM, confrontosF };
 }
 
 function deSeisANove(lista) {
@@ -22,9 +23,13 @@ function deSeisANove(lista) {
     return idade >= 6 && idade < 10;
   });
 
-  const confrontos = listarConfrontos(participantes);
+  const masculino = retornaMasculino(participantes);
+  const feminino = retornaFeminino(participantes);
 
-  return confrontos;
+  const confrontosM = listarConfrontos(masculino);
+  const confrontosF = listarConfrontos(feminino);
+
+  return { confrontosM, confrontosF };
 }
 
 function deDezATreze(lista) {
@@ -33,9 +38,13 @@ function deDezATreze(lista) {
     return idade >= 10 && idade < 14;
   });
 
-  const confrontos = listarConfrontos(participantes);
+  const masculino = retornaMasculino(participantes);
+  const feminino = retornaFeminino(participantes);
 
-  return confrontos;
+  const confrontosM = listarConfrontos(masculino);
+  const confrontosF = listarConfrontos(feminino);
+
+  return { confrontosM, confrontosF };
 }
 
 function deCatorzeADezessete(lista) {
@@ -44,17 +53,25 @@ function deCatorzeADezessete(lista) {
     return idade >= 14 && idade < 17;
   });
 
-  const confrontos = listarConfrontos(participantes);
+  const masculino = retornaMasculino(participantes);
+  const feminino = retornaFeminino(participantes);
 
-  return confrontos;
+  const confrontosM = listarConfrontos(masculino);
+  const confrontosF = listarConfrontos(feminino);
+
+  return { confrontosM, confrontosF };
 }
 
 function acimaDezoito(lista) {
   const participantes = lista.filter(({ Nasc }) => retornarIdade(Nasc) >= 18);
 
-  const confrontos = listarConfrontos(participantes);
+  const masculino = retornaMasculino(participantes);
+  const feminino = retornaFeminino(participantes);
 
-  return confrontos;
+  const confrontosM = listarConfrontos(masculino);
+  const confrontosF = listarConfrontos(feminino);
+
+  return { confrontosM, confrontosF };
 }
 
 export {

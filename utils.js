@@ -23,8 +23,8 @@ function listarConfrontos(participantes) {
   for (let i = 0; i < participantes.length; i += 2) {
     const pessoa1 = participantes[i];
     const pessoa2 = participantes[i + 1];
-    elementosParaRenderizar += `<p><span>${pessoa1.Nome}</span> X <span>${
-      pessoa2?.Nome ?? "Sem oponente"
+    elementosParaRenderizar += `<p><span>${pessoa1.Nome.toLowerCase()}</span> X <span>${
+      pessoa2?.Nome.toLowerCase() ?? "Sem oponente"
     }</span></p>`;
   }
   return elementosParaRenderizar;
@@ -42,4 +42,18 @@ function retornarIdade(nascimento) {
   return tempo / (1000 * 60 * 60 * 24 * 365);
 }
 
-export { embaralha, listarConfrontos, retornarIdade };
+function retornaMasculino(lista) {
+  return lista.filter((pessoa) => pessoa.Sexo === "MASCULINO");
+}
+
+function retornaFeminino(lista) {
+  return lista.filter((pessoa) => pessoa.Sexo === "FEMININO");
+}
+
+export {
+  embaralha,
+  listarConfrontos,
+  retornarIdade,
+  retornaMasculino,
+  retornaFeminino,
+};
