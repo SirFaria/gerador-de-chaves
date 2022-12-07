@@ -1,71 +1,60 @@
-import { excelDateToJsDate } from "./excel.js";
+import { listarConfrontos, retornarIdade } from "./utils.js";
+
+function carregarCategoria(lista, validador) {
+  const participantes = lista.filter(({ Nasc }) =>
+    validador(retornarIdade(Nasc))
+  );
+
+  return listarConfrontos(participantes);
+}
 
 function abaixoCinco(lista) {
-  const participantes = lista.filter((pessoa) => {
-    const idadeEmSegundos =
-      new Date().getTime() - new Date(excelDateToJsDate(pessoa.Nasc)).getTime();
-    // Retorna as pessoas cujo a idade é menor que 6 anos
-    // Pessoas com 5 anos e alguns dias entram nesse retorno
-    return idadeEmSegundos < 6 * 365 * 86400 * 1000;
-  });
+  const participantes = lista.filter(({ Nasc }) => retornarIdade(Nasc) < 6);
 
-  return participantes;
+  const confrontos = listarConfrontos(participantes);
+
+  return confrontos;
 }
 
 function deSeisANove(lista) {
-  const participantes = lista.filter((pessoa) => {
-    const idadeEmSegundos =
-      new Date().getTime() - new Date(excelDateToJsDate(pessoa.Nasc)).getTime();
-    // Retorna as pessoas cujo a idade é menor que 10 anos e maior ou igual a 6 anos
-    // Pessoas com 9 anos e alguns dias entram nesse retorno
-    return (
-      idadeEmSegundos >= 6 * 365 * 86400 * 1000 &&
-      idadeEmSegundos < 10 * 365 * 86400 * 1000
-    );
+  const participantes = lista.filter(({ Nasc }) => {
+    const idade = retornarIdade(Nasc);
+    return idade >= 6 && idade < 10;
   });
 
-  return participantes;
+  const confrontos = listarConfrontos(participantes);
+
+  return confrontos;
 }
 
 function deDezATreze(lista) {
-  const participantes = lista.filter((pessoa) => {
-    const idadeEmSegundos =
-      new Date().getTime() - new Date(excelDateToJsDate(pessoa.Nasc)).getTime();
-    // Retorna as pessoas cujo a idade é menor que 14 anos e maior ou igual a 10 anos
-    // Pessoas com 13 anos e alguns dias entram nesse retorno
-    return (
-      idadeEmSegundos >= 10 * 365 * 86400 * 1000 &&
-      idadeEmSegundos < 14 * 365 * 86400 * 1000
-    );
+  const participantes = lista.filter(({ Nasc }) => {
+    const idade = retornarIdade(Nasc);
+    return idade >= 10 && idade < 14;
   });
 
-  return participantes;
+  const confrontos = listarConfrontos(participantes);
+
+  return confrontos;
 }
 
 function deCatorzeADezessete(lista) {
-  const participantes = lista.filter((pessoa) => {
-    const idadeEmSegundos =
-      new Date().getTime() - new Date(excelDateToJsDate(pessoa.Nasc)).getTime();
-    // Retorna as pessoas cujo a idade é menor que 18 anos e maior ou igual a 14 anos
-    // Pessoas com 17 anos e alguns dias entram nesse retorno
-    return (
-      idadeEmSegundos >= 14 * 365 * 86400 * 1000 &&
-      idadeEmSegundos < 18 * 365 * 86400 * 1000
-    );
+  const participantes = lista.filter(({ Nasc }) => {
+    const idade = retornarIdade(Nasc);
+    return idade >= 14 && idade < 17;
   });
 
-  return participantes;
+  const confrontos = listarConfrontos(participantes);
+
+  return confrontos;
 }
 
 function acimaDezoito(lista) {
-  const participantes = lista.filter((pessoa) => {
-    const idadeEmSegundos =
-      new Date().getTime() - new Date(excelDateToJsDate(pessoa.Nasc)).getTime();
-    // Retorna as pessoas cujo a idade é maior ou igual a 18 anos
-    return idadeEmSegundos >= 18 * 365 * 86400 * 1000;
-  });
+  const participantes = lista.filter(({ Nasc }) => retornarIdade(Nasc) >= 18);
 
-  return participantes;
+  const confrontos = listarConfrontos(participantes);
+
+  return confrontos;
 }
 
 export {
