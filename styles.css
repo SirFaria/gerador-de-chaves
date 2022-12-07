@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #333;
+  background-color: #0d3b66;
   height: 100vh;
 }
 
@@ -26,7 +26,7 @@ button:hover {
 }
 
 .file-selector-row {
-  background-color: #333;
+  background-color: white;
   padding: 2rem;
   display: flex;
   justify-content: center;
